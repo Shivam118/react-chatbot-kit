@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
+import HomeScreen from "./bot/HomeScreen";
+import SuccessPage from "./bot/SuccessPage";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "100vw",
+                height: "100vh",
+                background: "#376D7E",
+              }}
+            >
+              <h1 style={{ color: "white" }}>Enter into Student Info System</h1>
+              <NavLink to="/details" style={{ textDecoration: "none" }}>
+                <div
+                  style={{
+                    color: "white",
+                    border: "1px solid white",
+                    borderRadius: "15px",
+                    padding: "10px 15px",
+                  }}
+                >
+                  Enroll Now!
+                </div>
+              </NavLink>
+            </div>
+          }
+        />
+        <Route path="/details" element={<HomeScreen />} />
+        <Route path="/success" element={<SuccessPage />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
